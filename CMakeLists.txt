@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.26)
+project(sum LANGUAGES CXX)
+add_library(mymath STATIC src/sum.cpp)
+target_include_directories(mymath PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_compile_features(mymath PUBLIC cxx_std_11)
+set_target_properties(mymath PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+add_executable(exe src/main.cpp)
+target_link_libraries(exe PRIVATE mymath)
